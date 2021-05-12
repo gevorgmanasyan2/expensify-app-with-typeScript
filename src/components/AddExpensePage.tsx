@@ -1,9 +1,31 @@
-import React from 'react';
+import React,{FC} from 'react';
 import {connect} from 'react-redux';
 import {addExpense} from '../actions/expenses';
 import ExpenseForm from './ExpenseForm';
 
-const AddExpensePage=(props)=>(
+
+type AddExpenseProps={
+  expense:expenses,
+  match:{
+      params:{
+          id:string
+      }
+  },
+  history:{
+      push:any
+  },
+  dispatch:any
+};
+
+type expenses={
+  id:string,
+  description:string,
+  createdAt:number,
+  note:string,
+  amount:number
+}
+
+const AddExpensePage:FC<AddExpenseProps>=(props)=>(
     <div>
         <div className="page-header">
           <div className="content-container">
@@ -12,7 +34,8 @@ const AddExpensePage=(props)=>(
         </div>    
         <div className="content-container">
         <ExpenseForm 
-           onSubmit={(expense)=>{
+           expense={props.expense}
+           onSubmit={(expense:any)=>{
            props.dispatch(addExpense(expense));
            props.history.push('/');
        }}

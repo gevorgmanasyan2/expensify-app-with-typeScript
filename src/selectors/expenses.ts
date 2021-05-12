@@ -1,8 +1,20 @@
-import moment from 'moment';        
-
-export default (expenses, { text, sortBy, startDate, endDate }) => {
+import moment from 'moment'; 
+type Expenses={
+ id:string,
+        description:string,
+        createdAt:number,
+        note:string,
+        amount:number,  
+}       
+type Filters={
+  text:string,
+  sortBy:string,
+  startDate:any,
+  endDate:any
+}
+export default (expenses:any, { text, sortBy, startDate, endDate }:Filters) => {
   return expenses
-    .filter((expense) => {
+    .filter((expense:any) => {
 
     //   const startDateMatch =
     //     typeof startDate !== "number" || expense.createdAt >= startDate;
@@ -16,7 +28,7 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
         .includes(text.toLowerCase());
       return startDateMatch && endDateMatch && textMatch;
     })
-    .sort((a, b) => {
+    .sort((a:any, b:any) => {
       if (sortBy === "date") {
         return a.createdAt < b.createdAt ? 1 : -1;
       } else if (sortBy === "amount") {
