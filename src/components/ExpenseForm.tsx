@@ -23,16 +23,8 @@ interface MyState{
     calendarFocused:any,
     error:string
 }
-// type expenses={
-//     id:string,
-//     description:string,
-//     createdAt:number,
-//     note:string,
-//     amount:number
-// };
-const now=moment();
-// console.log(now.format('MMM Do, YYYY'));
 
+const now=moment();
 export default class ExpenseForm extends React.Component<ExpenseProps,MyState>{
     constructor(props:ExpenseProps){
         super(props)
@@ -45,13 +37,10 @@ export default class ExpenseForm extends React.Component<ExpenseProps,MyState>{
             error:'',
             id:this.props.expense?this.props.expense.id:''
         }
-        // console.log(props);
-        // console.log('ffff');
+        
     }
     
-     onDescriptionChange=(e:React.FormEvent<HTMLInputElement>):void=>{
-        //  console.log("e.target", e.target);
-        //  console.log("e.currentTarget.value", e.currentTarget.value);
+     onDescriptionChange=(e:React.FormEvent<HTMLInputElement>):void=>{        
          
       const description=e.currentTarget.value;
       this.setState(()=>({description}))
@@ -92,10 +81,10 @@ export default class ExpenseForm extends React.Component<ExpenseProps,MyState>{
         }             
     };
     render(){
-        console.log(this.state.calendarFocused,'111111111111')
+       
         return(              
               <form className="form" onSubmit={this.onSubmit}>
-                   {this.state.error && <p className="form__error">{this.state.error}</p>}                 
+                   {this.state.error && <input className="form__error">{this.state.error}</input>}                 
                   <input
                   type="text"
                   placeholder="Description"

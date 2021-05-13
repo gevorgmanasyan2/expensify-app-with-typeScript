@@ -3,11 +3,15 @@ import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
 
 
-const ExpenseDashboardPage=()=>(
+const ExpenseDashboardPage=(props:any)=>{
+    
+    
+return(
     <div>
         <ExpenseListFilters />
         <ExpenseList />        
     </div>
 )
+}
 
 export default ExpenseDashboardPage;

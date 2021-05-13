@@ -24,15 +24,7 @@ type expenses={
     amount:number
 }
 
-const EditExpensePage:FC<EditExpenseProps>=(props)=>{ 
-    // console.log("expenseProps", props);
-    // console.log("expenseProps.expense", expenseProps.expense);  
-    // console.log("expense.expense.id", expense.expense.id);  
-    // console.log("expense.match", expense.match);
-    // console.log("expense.dispatch", expense.dispatch);
-    // console.log("expense.history", expense.history);
-    
-
+const EditExpensePage:FC<EditExpenseProps>=(props)=>{    
     return (
         <div>
             <div className="page-header">
@@ -43,10 +35,7 @@ const EditExpensePage:FC<EditExpenseProps>=(props)=>{
             <div className="content-container">
             <ExpenseForm
             expense={props.expense}
-            onSubmit={(expense:any)=>{
-                // console.log("updated", expense);
-                // console.log("updated expense.id", expense.id);
-                // console.log("updated expense.expense.id", expense.expense);
+            onSubmit={(expense:any)=>{                
                 props.dispatch(editExpense(expense.id,expense));
                 props.history.push('/');
             }}
@@ -60,15 +49,11 @@ const EditExpensePage:FC<EditExpenseProps>=(props)=>{
     );
 };
 
-const mapStateToProps=(state:any,props:any)=>{
-    // console.log(state);
-    return{
-        
-        
+const mapStateToProps=(state:any,props:any)=>{    
+    return{        
         expense:state.expenses.find((expense:any)=>expense.id===props.match.params.id)
     }
 }
 
 export default connect(mapStateToProps)(EditExpensePage);
 
-// export default EditExpensePage;

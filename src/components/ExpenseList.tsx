@@ -17,8 +17,8 @@ type waiverType={
     note:string
 }
 
-export const ExpenseList:FC<PropsExpenses>=({dispatch,expenses})=>{
-    // console.log( props);
+export const ExpenseList:FC<PropsExpenses>=({dispatch,expenses})=>{    
+  
     return(
         <div className="content-container">
             <div className="list-header">

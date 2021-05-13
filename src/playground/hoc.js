@@ -12,13 +12,13 @@ import ReactDom from 'react-dom';
 const Info=()=>(
     <div>
         <h1>Info</h1>
-        <p>The info is:{PaymentResponse.info}</p>
+        <input>The info is:{PaymentResponse.info}</input>
     </div>
 );
 const withAdminWarning=(WrappedComponent)=>{
     return(props)=>(
         <div>
-            {props.isAdmin && <p>This is private info.Please dont share</p>}
+            {props.isAdmin && <input>This is private info.Please dont share</input>}
             <WrappedComponent {...props} />
         </div>
     );
@@ -29,7 +29,7 @@ const requireAuthentication=(WrappedComponent)=>{
             {props.isAuthenticated?(
                 <WrappedComponent {...props} />
             ):(
-<p>Please login to view the info</p>
+<input>Please login to view the info</input>
             )}
         </div>
     );
